@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white;
+  }
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Print letter styles */
+@media print {
+  html, body {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    background: white !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  /* Reset all fixed/transform overlays from Modal components when printing */
+  .fixed,
+  [class*="fixed"],
+  [class*="overflow-y-auto"],
+  [class*="overflow-hidden"],
+  [class*="transform"] {
+    position: static !important;
+    overflow: visible !important;
+    max-height: none !important;
+    height: auto !important;
+    transform: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .printable-letter,
+  .printable-letter * {
+    visibility: visible;
+  }
+
+  .printable-letter {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .printable-sheet {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 10mm 15mm !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: white !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .page-break {
+    page-break-before: always !important;
+    break-before: page !important;
+  }
+}
